@@ -34,7 +34,7 @@ void shutdown_timer(int);
 void player(string);  //search the song from file(songs.txt) then play the song.
 void help();          //show commands
 void hacking();
-void install(string); // create music folders
+//void install(string); // create music folders
 void block(string);  //block the websites
 void openf(string);   // open the file directory
 void lists(string);   //show song list
