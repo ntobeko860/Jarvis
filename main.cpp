@@ -292,6 +292,7 @@ void search(string query,string extra)                                //Searchin
             if (s_count%5==0)
             {
                 //line();
+		cout<<endl;
                 Sleep(90);
                 cout<<"Colleting info..\n";
                 Sleep(50);
@@ -300,7 +301,7 @@ void search(string query,string extra)                                //Searchin
                 cout<<"clear the cookies..\n";
                 Sleep(100);
                 system("ipconfig");
-                line();
+                cout<<endl;
                 x.typing("All protocols are secured...");
             }
 
@@ -316,7 +317,6 @@ void search(string query,string extra)                                //Searchin
             }
             else if(extra == "song")
             {
-                // for international songs
                 url= "start https://en.muzmo.org/search?q=";
                 url+=query;
                 system(string(url).c_str());
