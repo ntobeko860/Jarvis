@@ -277,7 +277,7 @@ void shutdown_timer(int t)
 
 //----------------online searching and downloading songs----------------
 
-void search(string query,string extra)                                //Searchn function with two arguments which will take a query from the user
+void search(string query,string extra)                                //Searching function with two arguments which will take a query from the user
 {
           for(int i=0;query[i]!=NULL;i++)
               {
@@ -291,7 +291,7 @@ void search(string query,string extra)                                //Searchn 
             x.typing("verifying internet connection....");
             if (s_count%5==0)
             {
-                line();
+                //line();
                 Sleep(90);
                 cout<<"Colleting info..\n";
                 Sleep(50);
@@ -333,14 +333,7 @@ void search(string query,string extra)                                //Searchn 
                 url+=query;
                 system(string(url).c_str());
             }
-            else if(extra == "movie")
-            {
-
-                url= "start https://www.google.com/search?q=";
-                url+=query;
-                url+="+-inurl%3A(htm%7Chtml%7Cphp%7Cpls%7Ctxt)+intitle%3Aindex.of+%22last+modified%22(mp4%7Cmkv%7Cwma%7Caac%7Cavi)";
-                system(string(url).c_str());
-            }
+      
             else
             {
                 url="start https://www.google.com/search?q=";
@@ -396,34 +389,6 @@ void lists(string link)
       }
     file.close();
     system("pause");
-}
-
-//----------------------hacking zone------------------
-void hacking()
-{
-system("cls");
-system("color f");
-x.speak("You are Welcome in the Hacking Lab");
-cout << setfill(' ') << setw(50) <<"      ________       \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |    #    |      \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |  #   # |      \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |  #   # |      \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |   # #  |      \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |    #   |      \n";
-Sleep(100);
-cout << setfill(' ') << setw(50) <<"     |________|      \n";
-line();
-Sleep(1000);
-system("color c");
-cout << setfill(' ') << setw(50) <<" Vinay Hacking Lab  \n";
-Sleep(1000);
-line();
-x.typing("Still in development...");
 }
 
 void block(string website)
