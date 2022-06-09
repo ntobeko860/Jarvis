@@ -66,38 +66,34 @@ for (int i=0;t[i]!='\0';i++)
 //-------------------clock function--------------
 void assistant::clock()
 {
-string DAYS[]={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
-//string numDesc[]={"th","st","nd","rd","th","th","th","th","th","th"};
-string monthDesc[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
 
-    cout << std::boolalpha;
-    time_t now = time(0);
+  time_t now = time(0); // get current date and time  
+    
+  
+    tm* CAT = localtime(&now);  
+  
+    // print various components of tm structure.  
+    cout << "Today's  date is " << 1900 + CAT->tm_year<< "-"<<1 + CAT->tm_mon<< "-"<<CAT->tm_mday << endl; // print the year  
+      
+    // Print time in hour:minute:second  
+    cout << "Time: " << 2 + CAT->tm_hour << ":";  
+    cout <<  CAT->tm_min << ":";  
+    cout << CAT->tm_sec << endl;  
     tm*ltm = localtime(&now);
-    if(ltm->tm_hour < 12)
+ 
+    if(CAT->tm_hour < 12)
         greet="Good morning";
-    else if (ltm->tm_hour >=12)
-           if(ltm->tm_hour >16)
+    else if (CAT->tm_hour >=12)
+           if(CAT->tm_hour >16)
             greet="Good evening";
            else
             greet="Good Afternoon";
 
-    cout <<"   "<<monthDesc[ltm->tm_mon];
-    cout <<" "<<ltm->tm_mday <<numDesc[ltm->tm_mday%10];
-    cout <<" "<<ltm->tm_year+1900 ;
-    if (DAYS[ltm->tm_wday]=="Monday")
-        cout<<" (Sunday)";
-    else
-        cout << " (" << DAYS[ltm->tm_wday-1]<<")";
-    greet += " Mr Kwender";
+    greet += " Mr Kwenda";
     cout<<"\t\t\t\t\t\t\t\t\t";
     cout<<greet;
-    cout << "\n   Time:-"<<( ltm->tm_hour <= 12 ?ltm->tm_hour : ltm->tm_hour-12);
-    cout <<":"<< ltm->tm_min<<(ltm->tm_hour < 12 ? "am":"pm");
-
+ 
 }
-
-
-
 
 assistant::~assistant()
 {
