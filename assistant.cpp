@@ -14,7 +14,7 @@
 
 using namespace std;
 
-string greet;
+string salutation;
 //--------------constructor---------------
 assistant::assistant()
 {
@@ -26,16 +26,16 @@ assistant::assistant()
 
 }
 
-//----------greeting function--------------
+//----------salutation function--------------
 void assistant::greeting()
 {
-    system("color a");
+    //system("color a");
     cout<<"\n\n\n\n\n\n\n\t\t\t\t\t\t";
     cout<<"Welcome to the Jarvis ";
-    Sleep(300);
+    Sleep(250);
     speak(greet);
     system("color 0c");
-    Sleep(400);
+    Sleep(500);
 }
 
 //--------------speak function--------------
@@ -67,7 +67,7 @@ for (int i=0;t[i]!='\0';i++)
 void assistant::clock()
 {
 string DAYS[]={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
-string numDesc[]={"th","st","nd","rd","th","th","th","th","th","th"};
+//string numDesc[]={"th","st","nd","rd","th","th","th","th","th","th"};
 string monthDesc[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
 
     cout << std::boolalpha;
@@ -88,7 +88,7 @@ string monthDesc[]={"January","February","March","April","May","June","July","Au
         cout<<" (Sunday)";
     else
         cout << " (" << DAYS[ltm->tm_wday-1]<<")";
-    greet += " Vinay";
+    greet += " Mr Kwender";
     cout<<"\t\t\t\t\t\t\t\t\t";
     cout<<greet;
     cout << "\n   Time:-"<<( ltm->tm_hour <= 12 ?ltm->tm_hour : ltm->tm_hour-12);
