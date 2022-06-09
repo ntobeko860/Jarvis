@@ -39,7 +39,7 @@ void block(string);  //block the websites
 void openf(string);   // open the file directory
 void lists(string);   //show song list
 void convert(string&);   //convert 'space( )' to 'underscore'( _ ) and lowercase string
-void srch(string,string extra="");
+void search(string,string extra="");
 void update_song(string);   //copy song name from different files(list.txt) file into one file(songs.txt)
 
 
@@ -124,10 +124,10 @@ void check()
           }
     else if(input=="exit"||input=="q"||input=="quit")
           {
-            x.speak("Good bye, Vinay");
+            x.speak("Good bye, Clopas");
             Sleep(600);
             cout<<"\n\n\n\n\n\n\t\t\t\t\t";
-            x.typing("Created By : Vinay Hajare");
+            x.typing("Created By : ");
             Sleep(1500);
             exit(1);
           }
@@ -165,10 +165,10 @@ void check()
               x.typing("Vinay Hajare has made me.");
               Sleep(300);
               line();
-              x.typing("I was created on 1 April ,2021");
+              x.typing("I was created on ");
               Sleep(300);
               line();
-              x.typing("and he's making me better day by day");
+              x.typing("and they making me better day by day");
               Sleep(300);
           }
           else
@@ -202,7 +202,7 @@ void check()
           srch(s_word,"pdf");
 
       else if(m_word=="search")
-           srch(s_word);
+           search(s_word);
 
       else if(input=="help")
            help();
@@ -236,7 +236,7 @@ void check()
             }
       else if(m_word=="yt"||m_word=="youtube"||m_word=="watch")
             {
-                srch(s_word,"youtube");
+                search(s_word,"youtube");
             }
 
       else if(m_word=="open")
@@ -376,25 +376,25 @@ void shutdown_timer(int t)
      }
 }
 
-//----------------online srch and also 0download songs----------------
+//----------------online searching and downloading songs----------------
 
-void srch(string query,string extra)
+void search(string query,string extra)                                //Searchn function with two arguments which will take a query from the user
 {
-          for(int i=0;query[i]!='\0';i++)
+          for(int i=0;query[i]!=NULL;i++)
               {
                   if(query[i]==' ')
                     query[i]='+';
               }
 
-            Sleep(200);
+            Sleep(300);
             system("cls");
             line();
-            x.typing("Cheking internet connection...");
+            x.typing("verifying internet connection....");
             if (s_count%5==0)
             {
                 line();
                 Sleep(90);
-                cout<<"Colleting information..\n";
+                cout<<"Colleting info..\n";
                 Sleep(50);
                 cout<<"securing the data..\n";
                 Sleep(30);
@@ -408,7 +408,7 @@ void srch(string query,string extra)
             Sleep(250);
             x.speak("Connecting to your browser.");
             string url;
-
+           // opening youtube
             if(extra == "youtube")
             {
                 url= "start https://www.youtube.com/results?search_query=";
@@ -427,13 +427,6 @@ void srch(string query,string extra)
                 url+=query;
                 system(string(url).c_str());
 
-               //only for hindi and punjabi songs
-
-                url= "start https://www.google.com/search?q=";
-                url+=query;
-                url+="+djpunjab";
-                system(string(url).c_str());
-                Sleep(50);
             }
             else if(extra == "pdf")
             {
