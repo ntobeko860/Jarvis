@@ -34,7 +34,6 @@ void shutdown_timer(int);
 void player(string);  //search the song from file(songs.txt) then play the song.
 void help();          //show commands
 void hacking();
-//void install(string); // create music folders
 void block(string);  //block the websites
 void openf(string);   // open the file directory
 void lists(string);   //show song list
@@ -76,9 +75,9 @@ check();
 void check()
 {
    string line;
-    string group_members[5] = { "Bongiswa Ngcongo", "Khanyisile Momoti", "Ntobeko Hlongwa", "Manqoba Mlangeni", "Musa Sangweni" };
+    string group_members[5] = { "Bongiswa Ngcongo", "Khanyisile Momoti", "Ntobeko Hlongwa", "Manqoba Mlangeni", "Sphamandla Sangweni" };
 
-    /***** To covert the keyboard inputy tp lower case *****/
+    /***** To covert the keyboard inputy to lower case *****/
     std::cout << "Enter line here" << std::endl;
     getline(cin, line);
 
@@ -87,9 +86,6 @@ void check()
             line[i] = line[i] + 32;
         }
     }
-    /*****************************************************/
-
-
 
     if (line == "hi jarvis" || line == "hello jarvis" || line == "hello" || line == "hi") {
        // cout << "Hello Musa, How are you today";
