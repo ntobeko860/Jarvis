@@ -75,202 +75,109 @@ check();
 //----------------------------check function---------------------------//
 void check()
 {
-    if(m_word=="hi"||m_word=="hey"||m_word=="hello"||m_word=="hlo")
-         {
-            x.typing("Hi Ntobeko, how can I help you..");
-         }
+   string line;
+    string group_members[5] = { "Bongiswa Ngcongo", "Khanyisile Momoti", "Ntobeko Hlongwa", "Manqoba Mlangeni", "Musa Sangweni" };
 
-    else if(m_word=="how"||m_word=="thanks")
-     { if(input=="how are you")
-       {
-         x.typing("I am fine , thanks for asking ...");
-       }
-        else if (input=="thanks buddy")
-       {
-         x.typing("You are Welcome  sir , don't say thanks it's my job");
-       }
-     }
-    else if (m_word=="play")
-    {
-      if(input=="play"||input=="play "||s_word==" "||s_word=="  "||s_word=="   ")
-      {
-          x.speak("Sorry Ntobeko ,you does not enter song name");
-         // tutorial("play");
-      }
-      else
-        {
-          player(s_word);
+    /***** To covert the keyboard inputy tp lower case *****/
+    std::cout << "Enter line here" << std::endl;
+    getline(cin, line);
+
+    for (int i = 0; i < line.length(); i++) {
+        if (line[i] >= 'A' && line[i] <= 'Z') {
+            line[i] = line[i] + 32;
         }
     }
+    /*****************************************************/
 
-    else if(m_word=="update"||m_word=="updating")
-          {
-              system("cls");
-              line();
-              x.typing("Updating the song list...");
-              Sleep(100);
-              system("cls");
-              line();
-              x.typing("Please wait");
-              update_song("punjabi");
-              update_song("english");
-              update_song("hindi");
-              update_song("others");
-              system("cls");
-              remove("data\\songs.txt");
-              rename("data\\temp.txt","data\\songs.txt");
-              line();
-              x.typing("All songs are updated in the file");
-          }
-    else if(input=="exit"||input=="q"||input=="quit")
-          {
-            x.speak("Good bye, Clopas");
-            Sleep(600);
-            cout<<"\n\n\n\n\n\n\t\t\t\t\t";
-            x.typing("Created By : ");
-            Sleep(1500);
-            exit(1);
-          }
-    else if(input=="find ip"||input=="find my ip"||m_word=="ip")
-          {
-            x.typing("Finding your IP address");
-            system("ipconfig");
-            system("pause");
-          }
-      else if(m_word=="shutdown"||m_word=="restart")
-         {
-          x.typing("Your Pc will ");
-          x.typing(m_word);
-          shutdown_timer(5);
-          x.speak("Now , I am going to sleep");
-          if (m_word=="shutdown")
-              system("shutdown /s");
-          else
-              system("shutdown /r");
-          Sleep(10);
-          exit(1);
-         }
 
-      else if(m_word=="what"||m_word=="who"||m_word=="how"||m_word=="when"||m_word=="where"||m_word=="why")
-      {
-          if(input=="what is your name")
-          {
-            x.typing("My name is Jarvis.");
-          }
-          else if (input=="who are you"||input=="who created you"||input=="who made you")
-          {
-              x.typing("I am Jarvis, a personal assistant");
-              Sleep(300);
-              line();
-              x.typing("Vinay Hajare has made me.");
-              Sleep(300);
-              line();
-              x.typing("I was created on ");
-              Sleep(300);
-              line();
-              x.typing("and they making me better day by day");
-              Sleep(300);
-          }
-          else
-             srch(input);
-       }
 
-      else if(m_word=="song"||m_word=="music")
-          srch(s_word,"song");
+    if (line == "hi jarvis" || line == "hello jarvis" || line == "hello" || line == "hi") {
+       // cout << "Hello Musa, How are you today";
+	    x.typing("Hello Musa, How are you today");
 
-      else if(input=="install")
-          {
-              install("hindi");
-              install("english");
-              install("punjabi");
-              install("others");
-              install("Zulu");
-              cout<<"Creating folders...";
-              Sleep(200);
-              cout<<"Creating files...";
-              Sleep(200);
-              system("cls");
+    }
+    else if (line == "how are you" || line == "how are you today") {
+        //cout << "I am doing good Sir, How about you? ";
+	    x.typing("I am doing good Sir, How about you?");
 
-              x.typing("All files are installed");
-              Sleep(300);
-          }
+    }
+    else if (line == "thanks" || line == "thank you") {
+        //cout << "The pleasure is mine";
+	    x.typing("The pleasure is mine");
+	    
 
-      else if(m_word=="movie")
-          srch(s_word,"movie");
+    }
+    else if (line == "what is your name" || line == "who are you") {
 
-      else if(m_word=="pdf")
-          srch(s_word,"pdf");
+       // cout << "My name is Jarvis, I am virtual personal assistant" << endl;
+	    x.typing("My name is Jarvis, I am virtual personal assistant");
 
-      else if(m_word=="search")
-           search(s_word);
+    }
+    else if (line == "who made you" || line == "who built you") {
 
-      else if(input=="help")
-           help();
-
-      else if(m_word=="cmd")
-           system(s_word.c_str());
-
-      else if(input=="start hacking"||input=="hacking lab"||input=="hackingzone"||input=="hacking tools"||m_word=="hack")
-          {
-           hacking();
-          }
-
-      else if(m_word=="list")
-         {
-            if(s_word=="all songs"||s_word=="songs")
-               lists("data\\songs.txt");
-         }
-      /*else if(input=="unhide data"||input=="unhide data folder")
-            {
-              system("attrib -s -h data");
-            }
-      else if(input=="hide data"||input=="hide data folder")
-            {
-              system("attrib +s +h data");
-            }
-            */
-
-      else if(m_word=="block")
-            {
-                block(s_word);
-            }
-      else if(m_word=="yt"||m_word=="youtube"||m_word=="watch")
-            {
-                search(s_word,"youtube");
-            }
-
-      else if(m_word=="open")
-            {
-                if(s_word=="chrome"||s_word=="google chrome")
-                {
-                    system("start chrome");
-                }
-                else if(s_word=="mozilla"||s_word=="firefox")
-                {
-                   system("start firefox");
-                }
-                else
-                  openf(s_word);
-            }
-      else
-       {
-         x.speak("Sorry Ntobeko, unknown comaand...");
-         cnt++;
-         if(cnt>=3)
-         {  Sleep(600);
-            x.speak("I think ");
+        cout << "" << endl;
+        for (const string& member : group_members) {
+            cout << member << " " << endl;
             Sleep(500);
-            x.speak("you are a new user");
-            Sleep(600);
-            x.speak("You need some help...");
-            help();
-            //x.typing("do you want some tutorial(y/n)");
-            //if yes then tutorial();
-         }
-       }
+            cout << "" << endl;
+        }
+        //cout << "Collectively built me to be of your service " << endl;
+	    x.typing("Collectively built me to be of your service");
 
-Sleep(700);
-repeat();
+    }
+    /************** Still need further refining*************/
+    else if (line == "play song" || line == "song" ) { 
+       search(line, "song");    // call search (srch) function
+    }
+    else if (line == "help" ) {
+        help();                // call help function
+    }
+    else if (line == "cmd") {
+        system(s_word.c_str());    // call system function
+    }
+    else if (line == "youtube" || line == "videos" || line == "yt") {
+      search(line, "youtube")    // call search (srch) function
+    }
+    /************** Still need further refining*************/
+    else if (line == "open chrome") {
+        openf(line)    // call openf function
+        system(start chrome);
+    }
+    else if (line == "exit" || line == "quit") {
+        x.speack("Good bye ");
+        exit(1)
+
+    }
+    else if (line == "shutdown" || line == "restart") {
+        
+        x.typing("Your PC will");
+        x.typing(line);
+        if (line == "shutdown") 
+            system("shutdown /s");
+        else 
+            system("shutdown /r");
+            exit(1)
+    }
+    else if (line == "find my ip address" || line == "my ip address" || line == "ip address") {
+       
+        x.typing("Finding your IP address");
+        Sleep(700)
+        system("ipconfig");
+        system("pause");
+    }
+    else {
+        x.speack("Sorry Sir, that is an unknown command...");
+        cnt++
+        
+        x.speack()
+    }
+
+
+    Sleep(700);
+    repeat();
+    system("pause>0");
+    return 0;
+
 }
 
 //------------------------------player function------------------------//
