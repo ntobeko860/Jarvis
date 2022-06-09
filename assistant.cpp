@@ -71,7 +71,7 @@ void assistant::clock()
     cout << "Time: " << 2 + CAT->tm_hour << ":";  
     cout <<  CAT->tm_min << ":";  
     cout << CAT->tm_sec << endl;  
-    tm*ltm = localtime(&now);
+    tm*CAT = localtime(&now);
  
     if(CAT->tm_hour < 12)
         greet="Good morning";
