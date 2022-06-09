@@ -1,8 +1,3 @@
-
-
-
-
-
 #include<iostream>
 #include<stdlib.h>
 #include<fstream>
@@ -175,6 +170,7 @@ void check()
     return 0;
 
 }
+
 
 //------------------------------player function------------------------//
 void player(string item)
