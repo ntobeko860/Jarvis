@@ -1,7 +1,4 @@
-
-
-
-//---------------assistant.c++-----------------
+//Assistant class
 #include<iostream>
 #include<cstdlib>
 #include<fstream>
@@ -15,7 +12,7 @@
 using namespace std;
 
 string salutation;
-//--------------constructor---------------
+//constructor
 assistant::assistant()
 {
 
@@ -23,7 +20,6 @@ assistant::assistant()
  system("attrib +s +h data");
  system("cls");
  system("title   Jarvis");
-
 }
 
 //----------salutation function--------------
@@ -60,19 +56,15 @@ for (int i=0;t[i]!='\0';i++)
      cout<<t[i];
      Sleep(65);
    }
-
 }
 
-//-------------------clock function--------------
+//Full Data Function
 void assistant::clock()
 {
 
-  time_t now = time(0); // get current date and time  
-    
-  
+    time_t now = time(0); // get current date and time  
     tm* CAT = localtime(&now);  
-  
-    // print various components of tm structure.  
+ 
     cout << "Today's  date is " << 1900 + CAT->tm_year<< "-"<<1 + CAT->tm_mon<< "-"<<CAT->tm_mday << endl; // print the year  
       
     // Print time in hour:minute:second  
@@ -92,9 +84,7 @@ void assistant::clock()
     greet += " Mr Kwenda";
     cout<<"\t\t\t\t\t\t\t\t\t";
     cout<<greet;
- 
 }
-
 assistant::~assistant()
 {
     system("attrib +s +h data");
