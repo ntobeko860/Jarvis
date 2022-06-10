@@ -251,7 +251,7 @@ void update_song(string name)
 // function to display the timer
 void displayClock(int seconds)
 {
-	int hour,me;
+	int hour,minute;
 	hour=minute=0;
 	// system call to clear the screen
 	system("cls");
@@ -259,8 +259,8 @@ void displayClock(int seconds)
 	cout << setfill(' ') << setw(75) << "	        TIMER	      	\n";
 	cout << setfill(' ') << setw(75) << " --------------------------\n";
 	cout << setfill(' ') << setw(29);
-	cout << "| " << setfill('0') << setw(2) << hour << " hrs | ";
-	cout << setfill('0') << setw(2) << minute << " min | ";
+	cout << "| " << setfill('0') << setw(2) << hour << " hour | ";
+	cout << setfill('0') << setw(2) << minute << " minute | ";
 	cout << setfill('0') << setw(2) << seconds << " sec |" << endl;
 	cout << setfill(' ') << setw(75) << " --------------------------\n";
 }
