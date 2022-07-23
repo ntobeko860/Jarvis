@@ -1,3 +1,4 @@
+//main class
 #include<iostream>
 #include<stdlib.h>
 #include<fstream>
@@ -15,20 +16,18 @@ using namespace std;
 string input;
 
 int pos ,l_pos,cnt=0;
-string m_word ,s_word;
+string user_input ,s_word;
 int s_count=0;
 assistant x; //  main  object
 
 //---------------------all functions-------------------------
 
 void check();   //compare the user input with defined commands
-void line();      // create new line
 void repeat();     //ask user input again.
-void shutdown_timer(int);
-//void display(int);
+void shutdown_timer(int);//shutdown timer
+void line(); //new line
 void player(string);  //search the song from file(songs.txt) then play the song.
 void help();          //show commands
-void hacking();
 void block(string);  //block the websites
 void openf(string);   // open the file directory
 void lists(string);   //show song list
@@ -52,12 +51,13 @@ void repeat()
   system("color a");
   system("cls");
   x.clock();
-  cout<<" \n\n\nType Here  ---> ";
-  cin.clear();
-getline(cin,input);   // get command from user
 
+
+cout<<" \n\n\nType Here : ";
+cin.clear();
+getline(cin,input);   // get command from user
 pos = input.find(" ");
-m_word = input.substr(0,pos); //main command word
+user_input = input.substr(); //main command word
 l_pos = input.find('\0');
 s_word = input.substr(pos+1,l_pos); //rest word
 
@@ -69,153 +69,89 @@ check();
 //----------------------------check function---------------------------//
 void check()
 {
-   string line;
-    string group_members[5] = { "Bongiswa Ngcongo", "Khanyisile Momoti", "Ntobeko Hlongwa", "Manqoba Mlangeni", "Sphamandla Sangweni" };
+   int array_size = 5;
+    string group_members[array_size] = { "Bongiswa Ngcongo", "Khanyisile Momoti", "Ntobeko Hlongwa", "Manqoba Mlangeni", "Sphamandla Sangweni"};
 
     /***** To covert the keyboard inputy to lower case *****/
-    std::cout << "Enter line here" << std::endl;
-    getline(cin, line);
-
-    for (int i = 0; i < line.length(); i++) {
-        if (line[i] >= 'A' && line[i] <= 'Z') {
-            line[i] = line[i] + 32;
-        }
+    for (int i = 0; i < user_input.length(); i++) {
+        if (user_input[i] >= 'A' && user_input[i] <= 'Z')
+            user_input[i] = user_input[i] + 32;
     }
 
-    if (line == "hi jarvis" || line == "hello jarvis" || line == "hello" || line == "hi") {
-       // cout << "Hello Musa, How are you today";
-	    x.typing("Hello Musa, How are you today");
+    if (user_input == "hi jarvis" || user_input == "hello jarvis" || user_input == "hello" || user_input == "hi") {
+	    x.typing("Hello,how may I be at your service today? ");
 
     }
-    else if (line == "how are you" || line == "how are you today") {
-        //cout << "I am doing good Sir, How about you? ";
-	    x.typing("I am doing good Sir, How about you?");
+    else if (user_input == "how are you?" || user_input == "how are you today?") {
+	    x.typing("I am doing good, how about you?");
 
     }
-    else if (line == "thanks" || line == "thank you") {
-        //cout << "The pleasure is mine";
+    else if (user_input == "thanks" || user_input == "thank you") {
 	    x.typing("The pleasure is mine");
-	    
-
     }
-    else if (line == "what is your name" || line == "who are you") {
 
-       // cout << "My name is Jarvis, I am virtual personal assistant" << endl;
-	    x.typing("My name is Jarvis, I am virtual personal assistant");
-
+    else if (user_input == "what is your name?" || user_input == "who are you?") {
+	    x.typing("My name is Jarvis, I am virtual personal assistant made by UKZN developers");
     }
-    else if (line == "who made you" || line == "who built you") {
+
+    else if (user_input == "who made you?" || user_input == "who built you?") {
 
         cout << "" << endl;
-        for (const string& member : group_members) {
-            cout << member << " " << endl;
+        for (int i = 0; i < array_size; i++) {
+            x.typing(group_members[i]);
+            cout << " " << endl;
             Sleep(500);
-            cout << "" << endl;
         }
-        //cout << "Collectively built me to be of your service " << endl;
+        cout << "" << endl;
 	    x.typing("Collectively built me to be of your service");
-
     }
-    /************** Still need further refining*************/
-    else if (line == "play song" || line == "song" ) { 
-       search(line, "song");    // call search (srch) function
+    else if (user_input == "play song" || user_input == "song" ) {
+       search(user_input, "song");    // call search function
     }
-    else if (line == "help" ) {
+    else if (user_input == "help" ) {
         help();                // call help function
     }
-    else if (line == "cmd") {
+    else if (user_input == "cmd") {
         system(s_word.c_str());    // call system function
     }
-    else if (line == "youtube" || line == "videos" || line == "yt") {
-      search(line, "youtube")    // call search (srch) function
+    else if (user_input == "youtube" || user_input == "videos" || user_input == "yt") {
+      search(user_input, "youtube");    // call search function
     }
-    /************** Still need further refining*************/
-    else if (line == "open chrome") {
-        openf(line)    // call openf function
-        system(start chrome);
-    }
-    else if (line == "exit" || line == "quit") {
-        x.speack("Good bye ");
-        exit(1)
 
+    else if (user_input == "open chrome") {
+        openf(user_input);    // call openf function
+        system("start chrome");
     }
-    else if (line == "shutdown" || line == "restart") {
-        
+    else if (user_input == "exit" || user_input == "quit") {
+        x.speak("Good bye ");
+        exit(1);
+    }
+    else if (user_input == "shutdown" || user_input == "restart") {
+
         x.typing("Your PC will");
-        x.typing(line);
-        if (line == "shutdown") 
+        x.typing(user_input);
+        if (user_input == "shutdown")
             system("shutdown /s");
-        else 
+        else
             system("shutdown /r");
-            exit(1)
+            exit(1);
     }
-    else if (line == "find my ip address" || line == "my ip address" || line == "ip address") {
-       
+    else if (user_input == "find my ip address" || user_input == "my ip address" || user_input == "ip address") {
+
         x.typing("Finding your IP address");
-        Sleep(700)
+        Sleep(700);
         system("ipconfig");
         system("pause");
-    }
-    else {
-        x.speack("Sorry Sir, that is an unknown command...");
-        cnt++
-        
-        x.speack()
+
     }
 
+    else {
+        x.speak("Invalid command, please try again");
+        cnt++;
+    }
 
     Sleep(700);
     repeat();
-    system("pause>0");
-    return 0;
-
-}
-
-
-//------------------------------player function------------------------//
-void player(string item)
-{
-  ifstream file;
-  string song_name;
-  song_name=item;
-  convert(item);
-  char song[30],singer[30];
-  char path[90]="start My_beat\\";
-  file.open("data\\songs.txt",ios::app);
-  while(file>>song>>singer)
-  {
-      if(song==item)
-     {
-        x.typing("Playing the song ");
-        Sleep(150);
-        x.typing(song_name);
-        strcat(path,singer);
-        strcat(path,"\\");
-        strcat(path,song);
-        strcat(path,".mp3");
-        system(path);
-        break;
-      }
-    }
-    //--------------if song not found------------------
-    if (song!=item)
-        {
-          x.typing(song_name);
-          x.typing(" not found.");
-          if (s_count%3==0)
-              {
-                Sleep(200);
-                system("cls");
-                x.speak("But you can download the song by using the command");
-                Sleep(1300);
-                line();
-                x.typing("song ");
-                x.typing(song_name);
-              }
-          s_count++;
-          }
-
-  file.close();
 }
 
 //------------------------------convert string-------------------------//
@@ -228,22 +164,6 @@ void convert(string &c)
                c[i]='_';
             c[i]=tolower(c[i]);
         }
-}
-
-//------------------------------update the song list-------------------//
-void update_song(string name)
- {
-    fstream a,b;
-    char word[20], old[20];
-    system("cls");
-    a.open("My_beat\\"+name+"\\list.txt");
-    b.open("data\\temp.txt",ios::app|ios::ate);
-    while(a>>word)
-        {
-         b<<word<<" "<<name<<"\n";
-         }
-    b.close();
-    a.close();
 }
 
 //------------------------timer function--------------
@@ -264,7 +184,7 @@ void displayClock(int seconds)
 	cout << setfill('0') << setw(2) << seconds << " sec |" << endl;
 	cout << setfill(' ') << setw(75) << " --------------------------\n";
 }
-
+//-----------shutdown timer-----------------------
 void shutdown_timer(int t)
 {
 	while (t)
@@ -277,19 +197,19 @@ void shutdown_timer(int t)
 
 //----------------online searching and downloading songs----------------
 
-void search(string query,string extra)                                //Searching function with two arguments which will take a query from the user
+void search(string query,string extra)  //Searching function with two arguments which will take a query from the user and extra to take what was queried
 {
-          for(int i=0;query[i]!=NULL;i++)
+          for(int i=0;query[i]!='\0';i++)
               {
                   if(query[i]==' ')
                     query[i]='+';
               }
 
-            Sleep(300);
-            system("cls");
+            Sleep(300);                     //sleep time
+            system("cls");                  //using system function to cear screen
             line();
             x.typing("verifying internet connection....");
-            if (s_count%5==0)
+            if (s_count%5==0)               //if statement to count
             {
                 //line();
 		cout<<endl;
@@ -333,7 +253,7 @@ void search(string query,string extra)                                //Searchin
                 url+=query;
                 system(string(url).c_str());
             }
-      
+
             else
             {
                 url="start https://www.google.com/search?q=";
@@ -349,48 +269,7 @@ void line()
     cout<<"\n";
 }
 
-//----------------install files---------------------
-void install(string fold)
-{
-    fstream file;
-    string foldname,filename;
-    foldname="md My_beat\\";
-
-    foldname+=fold;
-    system(string(foldname).c_str());
-
-    filename="My_beat\\";
-    filename+=fold;
-    filename+="\\list.txt";
-    file.open(filename,ios::app);
-    file.close();
-}
-
-//---------------list the file texts------------------
-void lists(string link)
-{
-    fstream file;
-    int cnt=0;
-    char word[50],old[50];
-    file.open(link);
-    while(file>>word>>old)
-    {
-        cnt++;
-        cout<<word<<"\n";
-    }
-    cout<<"\n\t\tTotal songs available :"<<cnt<<endl;
-    string p,s="Only ";
-    p=cnt;
-    s+=p;
-    s+="songs are available";
-    if(cnt!=0)
-      {
-       x.speak(s);
-      }
-    file.close();
-    system("pause");
-}
-
+//---------block unsecured websites------------------
 void block(string website)
 {
     fstream file;
@@ -399,7 +278,7 @@ void block(string website)
     x.typing("Blocking the website..");
     file.close();
 }
-
+//--------------locate  the file---------------
 void openf(string location)
 {
 string path="start ",item=location;
@@ -427,16 +306,13 @@ cout << setfill(' ') << setw(75) <<"    2.open (google,mozilla)  \n";
 cout << setfill(' ') << setw(75) <<"    3.block (website name)   \n";
 cout << setfill(' ') << setw(75) <<"    4.song (song name)       \n";
 cout << setfill(' ') << setw(75) <<"    5.update                 \n";
-cout << setfill(' ') << setw(75) <<"    6.watch (videoname)      \n";
-cout << setfill(' ') << setw(75) <<"    7.pdf (pdfname)          \n";
-cout << setfill(' ') << setw(75) <<"    8.movie (moviename)      \n";
-cout << setfill(' ') << setw(85) <<"    9.what/how/where/who/why (question)\n";
-cout << setfill(' ') << setw(75) <<"   10.cmd (cmd commands)     \n";
-cout << setfill(' ') << setw(75) <<"   11.find my ip             \n";
-cout << setfill(' ') << setw(75) <<"   12.play (song name)       \n";
-cout << setfill(' ') << setw(75) <<"   13.list songs             \n";
+cout << setfill(' ') << setw(75) <<"    6.pdf (pdfname)          \n";
+cout << setfill(' ') << setw(85) <<"    7.what/how/where/who/why (question)\n";
+cout << setfill(' ') << setw(75) <<"   8.cmd (cmd commands)     \n";
+cout << setfill(' ') << setw(75) <<"   9.find my ip             \n";
 cout << setfill(' ') << setw(75) <<"   10.exit/quit/q            \n";
 cout << setfill(' ') << setw(75) <<"   11.shutdown/restart       \n";
-cout << setfill(' ') << setw(75) <<"   12.install                \n";
 system("pause");
 }
+
+
