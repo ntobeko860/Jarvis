@@ -11,7 +11,7 @@
 
 using namespace std;
 
-string salutation;
+string greet; //variable
 //constructor
 assistant::assistant()
 {
@@ -25,12 +25,12 @@ assistant::assistant()
 //----------salutation function--------------
 void assistant::greeting()
 {
-    //system("color a");
+    system("color a");
     cout<<"\n\n\n\n\n\n\n\t\t\t\t\t\t";
     cout<<"Welcome to the Jarvis ";
     Sleep(250);
     speak(greet);
-    system("color 0c");
+    //system("color 0c");
     Sleep(500);
 }
 
@@ -47,6 +47,7 @@ system("start data//speak.vbs");
 Sleep(300);
 }
 
+
 //---------------typing function--------------
 void assistant::typing(string t)
 {
@@ -58,30 +59,31 @@ for (int i=0;t[i]!='\0';i++)
    }
 }
 
-//Full Data Function
+//----------------Full Date Function-----------
 void assistant::clock()
 {
 
-    time_t now = time(0); // get current date and time  
-    tm* CAT = localtime(&now);  
- 
-    cout << "Today's  date is " << 1900 + CAT->tm_year<< "-"<<1 + CAT->tm_mon<< "-"<<CAT->tm_mday << endl; // print the year  
-      
-    // Print time in hour:minute:second  
-    cout << "Time: " << 2 + CAT->tm_hour << ":";  
-    cout <<  CAT->tm_min << ":";  
-    cout << CAT->tm_sec << endl;  
-    tm*CAT = localtime(&now);
- 
-    if(CAT->tm_hour < 12)
-        greet="Good morning";
-    else if (CAT->tm_hour >=12)
-           if(CAT->tm_hour >16)
-            greet="Good evening";
-           else
-            greet="Good Afternoon";
+    time_t now = time(0); // get current date and time
+    tm* CAT = localtime(&now);
 
-    greet += " Mr Kwenda";
+    cout << "Today's  date is " << 1900 + CAT->tm_year<< "-"<<1 + CAT->tm_mon<< "-"<<CAT->tm_mday << endl; // print the year
+
+    // Print time in hour:minute:second
+    cout << "Time: " << CAT->tm_hour << ":";
+    cout <<  CAT->tm_min << ":";
+    cout << CAT->tm_sec << endl;
+    //tm*CAT = localtime(&now);
+
+    if(CAT->tm_hour >=0 && CAT->tm_hour <12)
+       string greet="Good morning";
+    else if (CAT->tm_hour >=12 && CAT->tm_hour<14)
+         string greet="Good day";
+    else  if(CAT->tm_hour >=14 && CAT->tm_hour<18)
+            greet="Good afternoon";
+    else
+            greet="Good Evening";
+
+
     cout<<"\t\t\t\t\t\t\t\t\t";
     cout<<greet;
 }
